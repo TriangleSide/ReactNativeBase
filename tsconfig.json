@@ -5,6 +5,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
+    "declaration": true,
+    "declarationDir": "./lib",
     "outDir": "lib",
     "removeComments": true,
     "incremental": false,

@@ -1,9 +1,24 @@
 {
+  "name": "@triangleside/reactnativebase",
+  "version": "0.1.1",
+  "displayName": "React Native Base",
+  "author": "David Ouellette",
+  "license": "MIT",
   "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TriangleSide/ReactNativeBase.git"
+  },
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc",
     "test": "jest",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.18",
