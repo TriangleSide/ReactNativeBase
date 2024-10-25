@@ -1,6 +1,6 @@
 import React from "react";
 import {ListItemProps, ListItem } from "react-native-elements";
-import componentColor from "@/colors/componentColor";
+import {componentColor} from "@/colors/componentColor";
 
 type Props = ListItemProps & {
     selected: boolean

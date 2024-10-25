@@ -1,2 +1,2 @@
-export { default as Colors } from './colors';
-export { default as componentColor } from './componentColor';
+export * from './colors';
+export * from './componentColor';

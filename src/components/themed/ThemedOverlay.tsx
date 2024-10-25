@@ -1,5 +1,5 @@
 import React from "react";
-import componentColor from '@/colors/componentColor';
+import {componentColor} from '@/colors/componentColor';
 import {Overlay, OverlayProps} from "react-native-elements";
 
 export default function ThemedOverlay(props: OverlayProps): React.ReactNode {

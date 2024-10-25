@@ -1,6 +1,6 @@
 import React from "react";
 import {View, type ViewProps} from 'react-native';
-import componentColor from '@/colors/componentColor';
+import {componentColor} from '@/colors/componentColor';
 
 type Props = ViewProps & {
     center?: boolean;

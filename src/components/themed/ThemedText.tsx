@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, type TextProps, StyleSheet } from 'react-native';
-import componentColor from '@/colors/componentColor';
+import {componentColor} from '@/colors/componentColor';
 
 export const TEXT_TYPES = {
     DEFAULT: 'default',

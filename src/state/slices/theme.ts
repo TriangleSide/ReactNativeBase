@@ -22,10 +22,10 @@ const slice = createSlice({
     },
 });
 
+export const { setTheme } = slice.actions;
+export const themeReducer = slice.reducer;
+
 export const selectTheme = createSelector(
     (state: { [themeSliceName]: ThemeState }): ThemeState => state.theme,
     (themeState: ThemeState): Theme => themeState.theme
 );
-
-export const { setTheme } = slice.actions;
-export default slice.reducer;

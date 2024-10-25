@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Text, useColorScheme } from 'react-native';
 import { render } from '@testing-library/react-native';
 import { configureStore } from '@reduxjs/toolkit';
-import themeReducer, { setTheme } from '@/state/slices/theme';
+import { themeReducer, setTheme } from '@/state/slices/theme';
 import Themed from '../Themed';
 
 const renderWithProviders = (ui: React.ReactNode, { store }: { store: any }) => {

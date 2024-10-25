@@ -2,7 +2,7 @@ import React, {PropsWithChildren} from "react";
 import Markdown, {MarkdownProps} from "react-native-markdown-display";
 import ThemedView from "@/components/themed/ThemedView";
 import ThemedText from "@/components/themed/ThemedText";
-import componentColor from "@/colors/componentColor";
+import {componentColor} from "@/colors/componentColor";
 
 export default function ThemedMarkdown(props: PropsWithChildren<MarkdownProps>): React.ReactNode {
     const backgroundColor = componentColor('background')

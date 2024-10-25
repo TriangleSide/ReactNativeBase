@@ -1,5 +1,5 @@
 import React from "react";
-import componentColor from '@/colors/componentColor';
+import {componentColor} from '@/colors/componentColor';
 import {Card, CardProps} from "react-native-elements";
 
 type Props = CardProps & {
