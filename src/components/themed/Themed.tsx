@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { selectTheme, setTheme } from '@/state/slices/theme';
 import { useColorScheme } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectTheme, setTheme } from '@/state';
 
 interface Props {
     children?: React.ReactNode;

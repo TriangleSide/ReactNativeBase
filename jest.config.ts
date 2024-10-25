@@ -5,7 +5,7 @@ const config: Config = {
     preset: 'react-native',
     testPathIgnorePatterns: ['<rootDir>/node_modules', '<rootDir>/lib'],
     transformIgnorePatterns: [
-        '<rootDir>/node_modules/(?!(@react-native|react-native|react-redux)/)',
+        '<rootDir>/node_modules/(?!(@react-native|react-native|react-redux|react-native-elements|react-native-size-matters|react-native-ratings|react-native-markdown-display)/)',
     ],
     coveragePathIgnorePatterns: [],
     collectCoverage: true,

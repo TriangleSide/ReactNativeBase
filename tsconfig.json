@@ -1,9 +1,9 @@
 {
   "Display": "React Native Base",
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./*"]
     },
     "declaration": true,
     "declarationDir": "./lib",

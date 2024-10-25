@@ -1,6 +1,6 @@
 import React from "react";
-import {componentColor} from "@/colors/componentColor";
 import {Card, DividerProps} from "react-native-elements";
+import {componentColor} from '@/colors';
 
 const ThemedCardDivider: React.FC = (props: DividerProps) => {
     const { ...rest } = props;

@@ -1,6 +1,6 @@
 import React from "react";
-import {componentColor} from '@/colors/componentColor';
 import {Input, InputProps} from "react-native-elements";
+import {componentColor} from '@/colors';
 
 export default function ThemedInput(props: InputProps): React.ReactNode {
     const { inputStyle, ...rest } = props;

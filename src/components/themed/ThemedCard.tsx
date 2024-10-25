@@ -1,6 +1,6 @@
 import React from "react";
-import {componentColor} from '@/colors/componentColor';
 import {Card, CardProps} from "react-native-elements";
+import {componentColor} from '@/colors';
 
 type Props = CardProps & {
     children?: React.ReactNode;
