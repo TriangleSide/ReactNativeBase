@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import {ThemeProvider, DarkTheme, DefaultTheme} from "@react-navigation/native";
 import { selectTheme, setTheme } from '@/state';
 
 interface Props {
     children?: React.ReactNode;
 }
 
-const Themed: React.FC<Props> = ({ children }) => {
+const Themed: React.FC<Props> = (props: Props) => {
     const colorScheme = useColorScheme();
     const systemTheme = colorScheme ?? 'light';
     const theme = useSelector(selectTheme);
@@ -24,7 +25,11 @@ const Themed: React.FC<Props> = ({ children }) => {
         console.debug('Theme is not set.');
         return <></>;
     } else {
-        return <>{children}</>;
+        return (
+            <ThemeProvider value={theme === 'dark' ? DarkTheme : DefaultTheme}>
+                {props.children}
+            </ThemeProvider>
+        );
     }
 };
 
