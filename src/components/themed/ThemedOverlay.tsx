@@ -1,11 +1,19 @@
 import React from "react";
 import {Overlay, OverlayProps} from "react-native-elements";
 import {componentColor} from '@/colors';
+import {ThemedView} from "@/components";
 
-export default function ThemedOverlay(props: OverlayProps): React.ReactNode {
-    const { overlayStyle, ...rest } = props;
+type Props = OverlayProps & {
+    children?: React.ReactNode;
+    testID?: string;
+}
+
+export default function ThemedOverlay(props: Props): React.ReactNode {
+    const { overlayStyle, testID, children, ...rest } = props;
     const backgroundColor = componentColor('background');
     return (
-        <Overlay overlayStyle={[{ backgroundColor }, overlayStyle]} {...rest} />
+        <Overlay testID={testID || 'Overlay'} overlayStyle={[{ backgroundColor }, overlayStyle]} {...rest} >
+            {children}
+        </Overlay>
     )
 }

@@ -4,14 +4,15 @@ import {componentColor} from '@/colors';
 
 type Props = CardProps & {
     children?: React.ReactNode;
+    testID?: string;
 }
 
 export default function ThemedCard(props: Props): React.ReactNode {
-    const { containerStyle, ...rest } = props;
+    const { containerStyle, testID, ...rest } = props;
     const backgroundColor = componentColor('background');
     return (
         // @ts-ignore
-        <Card containerStyle={[{ backgroundColor }, containerStyle]} {...rest}>
+        <Card testID={testID || 'Card'} containerStyle={[{ backgroundColor }, containerStyle]} {...rest}>
             {props.children}
         </Card>
     )

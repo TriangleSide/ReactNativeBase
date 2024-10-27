@@ -10,19 +10,25 @@ export const TEXT_TYPES = {
 
 type Props = TextProps & {
     type?: typeof TEXT_TYPES[keyof typeof TEXT_TYPES];
+    testID?: string;
 };
 
-export default function ThemedText({ type = TEXT_TYPES.DEFAULT, style, ...rest }: Props): React.ReactNode {
+export default function ThemedText({ type = TEXT_TYPES.DEFAULT, testID, style, ...rest }: Props): React.ReactNode {
     const color = componentColor('text');
+
+    let styleToApply: any = {};
+    if (type === TEXT_TYPES.DEFAULT) {
+        styleToApply = styles.default;
+    } else if (type === TEXT_TYPES.TITLE) {
+        styleToApply = styles.title;
+    } else if (type === TEXT_TYPES.SUBTITLE) {
+        styleToApply = styles.subtitle;
+    }
+
     return (
         <Text
-            style={[
-                { color },
-                type === TEXT_TYPES.DEFAULT ? styles.default : undefined,
-                type === TEXT_TYPES.TITLE ? styles.title : undefined,
-                type === TEXT_TYPES.SUBTITLE ? styles.subtitle : undefined,
-                style,
-            ]}
+            testID={testID || 'Text'}
+            style={[{ color }, styleToApply, style]}
             {...rest}
         />
     );

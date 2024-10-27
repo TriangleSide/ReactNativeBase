@@ -1,7 +1,7 @@
 import type { Config } from 'jest';
 
 const config: Config = {
-    displayName: '@rnb',
+    displayName: '@triangleside/reactnativebase',
     preset: 'react-native',
     testPathIgnorePatterns: ['<rootDir>/node_modules', '<rootDir>/lib'],
     transformIgnorePatterns: [
@@ -16,13 +16,14 @@ const config: Config = {
         '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
         '\\.[jt]sx?$': 'babel-jest',
     },
+    testMatch: [ "**/?(*.)+(spec|test).[jt]s?(x)" ],
     collectCoverageFrom: [
         'src/**/*.{js,jsx,ts,tsx}',
         '!src/index.tsx'
     ],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/lib/$1',
+        '^@/(.*)$': '<rootDir>/src/$1',
     },
     setupFiles: ['<rootDir>/jest.setup.ts']
 };

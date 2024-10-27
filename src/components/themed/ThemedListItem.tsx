@@ -3,20 +3,21 @@ import {ListItemProps, ListItem } from "react-native-elements";
 import {componentColor} from '@/colors';
 
 type Props = ListItemProps & {
-    selected: boolean
+    selected: boolean;
+    testID?: string;
 }
 
 export default function ThemedListItem(props: Props): React.ReactNode {
-    const { containerStyle, ...rest } = props;
+    const { containerStyle, selected, testID, ...rest } = props;
     const backgroundColor = componentColor('background');
     const listItemBorderColor = componentColor('listItemBorder')
     const selectedColor = componentColor('selected')
     let borderColor = listItemBorderColor
-    if (props.selected) {
+    if (selected) {
         borderColor = selectedColor
     }
     return (
-        <ListItem containerStyle={[
+        <ListItem testID={testID || 'ListItem'} containerStyle={[
             {
                 backgroundColor,
                 borderColor,

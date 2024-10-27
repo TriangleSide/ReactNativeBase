@@ -3,19 +3,20 @@ import {View, type ViewProps} from 'react-native';
 import {componentColor} from '@/colors';
 
 type Props = ViewProps & {
-    center?: boolean;
+    centerHorizontally?: boolean;
+    testID?: string;
 }
 
 export default function ThemedView(props: Props): React.ReactNode {
-    const { style, center, ...rest } = props;
+    const { style, testID, centerHorizontally, ...rest } = props;
     const backgroundColor = componentColor('background');
-    if (center) {
-      return (
-          <View style={[{ backgroundColor, maxWidth: 1024, marginLeft: 'auto', marginRight: 'auto', width: "100%" }, style]} {...rest} />
-      )
+    let styleToSet: any;
+    if (centerHorizontally) {
+        styleToSet = { backgroundColor, maxWidth: 1024, marginLeft: 'auto', marginRight: 'auto', width: "100%" };
     } else {
-      return (
-          <View style={[{ backgroundColor, maxWidth: 1024 }, style]} {...rest} />
-      )
+        styleToSet = { backgroundColor, maxWidth: 1024 };
     }
+    return (
+        <View testID={testID || 'View'} style={[styleToSet, style]} {...rest} />
+    )
 }

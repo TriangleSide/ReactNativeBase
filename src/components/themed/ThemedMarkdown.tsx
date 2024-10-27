@@ -1,8 +1,13 @@
-import React, {PropsWithChildren} from "react";
+import React from "react";
 import Markdown, {MarkdownProps} from "react-native-markdown-display";
 import {componentColor} from '@/colors';
 
-export default function ThemedMarkdown(props: PropsWithChildren<MarkdownProps>): React.ReactNode {
+type Props = MarkdownProps & {
+    children?: React.ReactNode;
+}
+
+export default function ThemedMarkdown(props: Props): React.ReactNode {
+    const { children, ...rest } = props;
     const backgroundColor = componentColor('background')
     const codeColor = componentColor('codeColor');
     const textColor = componentColor('text');
@@ -10,7 +15,7 @@ export default function ThemedMarkdown(props: PropsWithChildren<MarkdownProps>):
         backgroundColor: backgroundColor,
         color: textColor,
     }
-    let style = {
+    const style = {
         body: defaultStyle,
         heading1: defaultStyle,
         heading2: defaultStyle,
@@ -71,8 +76,8 @@ export default function ThemedMarkdown(props: PropsWithChildren<MarkdownProps>):
         }
     }
     return (
-        <Markdown{...props} mergeStyle={true} style={style}>
-            {props.children}
+        <Markdown mergeStyle={true} style={style} {...rest}>
+            {children}
         </Markdown>
     )
 }

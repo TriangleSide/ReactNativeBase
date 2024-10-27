@@ -1,6 +1,6 @@
 {
   "name": "@triangleside/reactnativebase",
-  "version": "0.1.11",
+  "version": "0.1.16",
   "displayName": "React Native Base",
   "author": "David Ouellette",
   "license": "MIT",
@@ -17,8 +17,7 @@
   "scripts": {
     "build": "tsc && tsc-alias",
     "test": "jest",
-    "lint": "eslint src",
-    "publish": "npm publish --access public"
+    "lint": "eslint src"
   },
   "dependencies": {
     "react-native-markdown-display": "^7.0.2"

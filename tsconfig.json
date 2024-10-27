@@ -1,5 +1,5 @@
 {
-  "Display": "React Native Base",
+  "Display": "@triangleside/reactnativebase",
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
@@ -29,7 +29,6 @@
   },
   "include": ["src/**/*.tsx", "src/**/*.ts", "src/index.ts"],
   "exclude": [
-    "src/**/__tests__",
     "babel.config.cjs",
     "jest.config.js",
     "node_modules",

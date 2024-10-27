@@ -1,27 +1,14 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { Text, useColorScheme } from 'react-native';
-import { render } from '@testing-library/react-native';
-import { configureStore } from '@reduxjs/toolkit';
-import { themeReducer, setTheme } from '@/state';
+import { setTheme } from '@/state';
 import { Themed } from '@/components';
+import {configureStoreWithTheme, renderWithStoreProvider} from "./common";
 
-const renderWithProviders = (ui: React.ReactNode, { store }: { store: any }) => {
-    return render(<Provider store={store}>{ui}</Provider>);
-}
-
-describe('Themed Component', () => {
+describe('Themed', () => {
     let store;
 
     beforeEach(() => {
-        store = configureStore({
-            reducer: {
-                theme: themeReducer,
-            },
-            preloadedState: {
-                theme: { theme: 'light' },
-            },
-        });
+        store = configureStoreWithTheme();
     });
 
     afterEach(() => {
@@ -32,7 +19,7 @@ describe('Themed Component', () => {
         store.dispatch(setTheme(null));
         const dispatch = jest.spyOn(store, 'dispatch');
         (useColorScheme as jest.Mock).mockReturnValue('light');
-        renderWithProviders(<Themed><Text>Test Child</Text></Themed>, { store });
+        renderWithStoreProvider(<Themed><Text>Test Child</Text></Themed>, { store });
         expect(store.getState().theme.theme).toBe('light');
         expect(dispatch).toHaveBeenCalledWith(setTheme('light'));
     });
@@ -41,7 +28,7 @@ describe('Themed Component', () => {
         store.dispatch(setTheme(null));
         const dispatch = jest.spyOn(store, 'dispatch');
         (useColorScheme as jest.Mock).mockReturnValue('dark');
-        renderWithProviders(<Themed><Text>Test Child</Text></Themed>, { store });
+        renderWithStoreProvider(<Themed><Text>Test Child</Text></Themed>, { store });
         expect(store.getState().theme.theme).toBe('dark');
         expect(dispatch).toHaveBeenCalledWith(setTheme('dark'));
     });
@@ -51,7 +38,7 @@ describe('Themed Component', () => {
         store.dispatch(setTheme('light'));
         expect(store.getState().theme.theme).toBe('light');
         const dispatch = jest.spyOn(store, 'dispatch');
-        renderWithProviders(<Themed><Text>Test Child</Text></Themed>, { store });
+        renderWithStoreProvider(<Themed><Text>Test Child</Text></Themed>, { store });
         expect(dispatch).not.toHaveBeenCalledWith(setTheme('light'));
     });
 
@@ -60,7 +47,7 @@ describe('Themed Component', () => {
         store.dispatch(setTheme('dark'));
         expect(store.getState().theme.theme).toBe('dark');
         const dispatch = jest.spyOn(store, 'dispatch');
-        renderWithProviders(<Themed><Text>Test Child</Text></Themed>, { store });
+        renderWithStoreProvider(<Themed><Text>Test Child</Text></Themed>, { store });
         expect(dispatch).not.toHaveBeenCalledWith(setTheme('dark'));
     });
 
@@ -69,7 +56,7 @@ describe('Themed Component', () => {
         store.dispatch(setTheme('dark'));
         expect(store.getState().theme.theme).toBe('dark');
         const dispatch = jest.spyOn(store, 'dispatch');
-        renderWithProviders(<Themed><Text>Test Child</Text></Themed>, { store });
+        renderWithStoreProvider(<Themed><Text>Test Child</Text></Themed>, { store });
         expect(dispatch).toHaveBeenCalledWith(setTheme('light'));
     });
 
@@ -78,7 +65,15 @@ describe('Themed Component', () => {
         store.dispatch(setTheme('light'));
         expect(store.getState().theme.theme).toBe('light');
         const dispatch = jest.spyOn(store, 'dispatch');
-        renderWithProviders(<Themed><Text>Test Child</Text></Themed>, { store });
+        renderWithStoreProvider(<Themed><Text>Test Child</Text></Themed>, { store });
         expect(dispatch).toHaveBeenCalledWith(setTheme('dark'));
+    });
+
+    it('default to light if useColorScheme returns undefined', () => {
+        (useColorScheme as jest.Mock).mockReturnValue(undefined);
+        store.dispatch(setTheme(undefined));
+        const dispatch = jest.spyOn(store, 'dispatch');
+        renderWithStoreProvider(<Themed><Text>Test Child</Text></Themed>, { store });
+        expect(dispatch).toHaveBeenCalledWith(setTheme('light'));
     });
 });

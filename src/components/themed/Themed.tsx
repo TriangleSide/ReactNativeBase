@@ -8,7 +8,7 @@ interface Props {
     children?: React.ReactNode;
 }
 
-const Themed: React.FC<Props> = (props: Props) => {
+export default function Themed(props: Props): React.ReactNode {
     const colorScheme = useColorScheme();
     const systemTheme = colorScheme ?? 'light';
     const theme = useSelector(selectTheme);
@@ -16,13 +16,11 @@ const Themed: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         if (theme !== systemTheme) {
-            console.debug(`Setting theme to '${systemTheme}'.`);
             dispatch(setTheme(systemTheme));
         }
     }, [theme, systemTheme]);
 
     if (theme == null) {
-        console.debug('Theme is not set.');
         return <></>;
     } else {
         return (
@@ -32,5 +30,3 @@ const Themed: React.FC<Props> = (props: Props) => {
         );
     }
 };
-
-export default Themed;
